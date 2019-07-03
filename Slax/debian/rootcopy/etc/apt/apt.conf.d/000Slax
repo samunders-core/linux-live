@@ -1,3 +1,8 @@
 APT::Install-Recommends "0";
 APT::Install-Suggests "0";
 Acquire::Languages { "none"; }
+DPkg::Post-Invoke {
+  "echo -ne '\nSlax hint: create new module with: savechanges /run/initramfs/memory/data/slax/'";
+  "TODO";
+  "sed -nrze '3{s^(.*)^\1.sb\n^;p}' < /proc/$PPID/cmdline";
+}
