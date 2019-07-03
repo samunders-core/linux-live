@@ -2,7 +2,7 @@ APT::Install-Recommends "0";
 APT::Install-Suggests "0";
 Acquire::Languages { "none"; }
 DPkg::Post-Invoke {
-  "[ install = $DPKG_HOOK_ACTION ] && echo -ne '\nSlax hint: create new module with %60savechanges /run/initramfs/memory/data/slax/'}";
-  "[ install = $DPKG_HOOK_ACTION ] && ls -1 /run/initramfs/memory/data/slax/ | awk -F- 'END {printf(%22%2502d-%22,1+$1)}'";
-  "[ install = $DPKG_HOOK_ACTION ] && sed -nrze '3{s^(.*)^\1.sb%60\n^;p}' < /proc/$PPID/cmdline";
+  "grep -qz install /proc/$PPID/cmdline && echo -ne '\nSlax hint: create new module with %60savechanges /run/initramfs/memory/data/slax/'}";
+  "grep -qz install /proc/$PPID/cmdline && ls -1 /run/initramfs/memory/data/slax/ | awk -F- 'END {printf(%22%2502d-%22,1+$1)}'";
+  "grep -qz install /proc/$PPID/cmdline && sed -nrze '3{s^(.*)^\1.sb%60\n^;p}' < /proc/$PPID/cmdline";
 }
