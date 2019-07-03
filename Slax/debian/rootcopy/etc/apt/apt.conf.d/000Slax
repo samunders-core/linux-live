@@ -2,7 +2,7 @@ APT::Install-Recommends "0";
 APT::Install-Suggests "0";
 Acquire::Languages { "none"; }
 DPkg::Post-Invoke {
-  "echo -ne '\nSlax hint: create new module with: savechanges /run/initramfs/memory/data/slax/'";
-  "ls -1 /run/initramfs/memory/data/slax/ | awk -F- 'END {printf(\"%02d-\",1+$1)}'";
-  "sed -nrze '3{s^(.*)^\1.sb\n^;p}' < /proc/$PPID/cmdline";
+  "echo -ne '\nSlax hint: create new module with %60savechanges /run/initramfs/memory/data/slax/'";
+  "ls -1 /run/initramfs/memory/data/slax/ | awk -F- 'END {printf(%22%2502d-%22,1+$1)}'";
+  "sed -nrze '3{s^(.*)^\1.sb%60\n^;p}' < /proc/$PPID/cmdline";
 }
