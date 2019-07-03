@@ -3,6 +3,6 @@ APT::Install-Suggests "0";
 Acquire::Languages { "none"; }
 DPkg::Post-Invoke {
   "echo -ne '\nSlax hint: create new module with: savechanges /run/initramfs/memory/data/slax/'";
-  "TODO";
+  "ls -1 /run/initramfs/memory/data/slax/ | awk -F- 'END {printf(\"%02d-\",1+$1)}'";
   "sed -nrze '3{s^(.*)^\1.sb\n^;p}' < /proc/$PPID/cmdline";
 }
